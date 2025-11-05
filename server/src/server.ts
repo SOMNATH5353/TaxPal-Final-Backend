@@ -139,35 +139,7 @@ if (!(global as any).__taxpal_server_started) {
   console.log("[server] listen skipped (already started)");
 }
 
-// Start Server
-const HOST = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
-
-// Graceful shutdownT, () => {
-const server = app.listen(PORT, HOST, () => {tp://${HOST}:${PORT}`);
-  console.log(`🚀 TaxPal server running at http://${HOST}:${PORT}`);
-});
-export default app;
-// Handle graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('SIGTERM signal received: closing HTTP server');
-  server.close(() => {
-    console.log('HTTP server closed');
-    mongoose.connection.close(false, () => {
-      console.log('MongoDB connection closed');
-      process.exit(0);
-    });
-  });
-});
-
-process.on('SIGINT', () => {
-  console.log('SIGINT signal received: closing HTTP server');
-  server.close(() => {
-    console.log('HTTP server closed');
-    mongoose.connection.close(false, () => {
-      console.log('MongoDB connection closed');
-      process.exit(0);
-    });
-  });
-});
+// Duplicate server start + broken shutdown handlers removed.
+// The server is started above (only once). Export the Express app.
 
 export default app;
