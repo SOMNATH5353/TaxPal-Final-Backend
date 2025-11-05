@@ -139,4 +139,11 @@ if (!(global as any).__taxpal_server_started) {
   console.log("[server] listen skipped (already started)");
 }
 
+// Start Server
+const HOST = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
+
+app.listen(PORT, HOST, () => {
+  console.log(`🚀 TaxPal server running at http://${HOST}:${PORT}`);
+});
+
 export default app;

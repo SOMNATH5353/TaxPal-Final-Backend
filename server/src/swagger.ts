@@ -59,12 +59,12 @@ const options: swaggerJSDoc.Options = {
       {
         url:
           process.env.NODE_ENV === "production"
-            ? "https://taxpal-a-personal-finance-tracking-app-2.onrender.com/api/v1"
-            : "http://localhost:5000/api/v1",
+            ? "https://taxpal-a-personal-finance-tracking-app-2.onrender.com"
+            : `http://localhost:${process.env.PORT || 5000}`,
         description:
           process.env.NODE_ENV === "production"
-            ? "production server"
-            : "development server",
+            ? "Production server"
+            : "Development server",
       },
     ],
     basePath: "/api/v1", // ✅ Add this line
@@ -91,7 +91,7 @@ export const setupSwagger = (app: Application) => {
     `📘 Swagger docs available at: ${
       process.env.NODE_ENV === "production"
         ? "https://taxpal-a-personal-finance-tracking-app-2.onrender.com/api-docs"
-        : "http://localhost:5000/api-docs"
+        : `http://localhost:${process.env.PORT || 5000}/api-docs`
     }`
   );
 };
