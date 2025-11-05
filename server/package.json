@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "build": "tsc -p tsconfig.json",
+    "build": "npm install && tsc -p tsconfig.json",
     "dev": "nodemon src/server.ts"
   },
   "dependencies": {
